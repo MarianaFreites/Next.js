@@ -1,10 +1,10 @@
- import bcrypt from 'bcrypt';
- import { db } from '@vercel/postgres';
- import { invoices, customers, revenue, users } from '../lib/placeholder-data';
+import bcrypt from 'bcrypt';
+import { db } from '@vercel/postgres';
+import { invoices, customers, revenue, users } from '../lib/placeholder-data';
 
- const client = await db.connect();
+const client = await db.connect();
 
- async function seedUsers() {
+async function seedUsers() {
    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
    await client.sql`
      CREATE TABLE IF NOT EXISTS users (
@@ -29,7 +29,7 @@
    return insertedUsers;
  }
 
- async function seedInvoices() {
+async function seedInvoices() {
    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
    await client.sql`
@@ -55,7 +55,7 @@
    return insertedInvoices;
  }
 
- async function seedCustomers() {
+async function seedCustomers() {
    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
    await client.sql`
@@ -80,7 +80,7 @@
    return insertedCustomers;
  }
 
- async function seedRevenue() {
+async function seedRevenue() {
    await client.sql`
      CREATE TABLE IF NOT EXISTS revenue (
        month VARCHAR(4) NOT NULL UNIQUE,
